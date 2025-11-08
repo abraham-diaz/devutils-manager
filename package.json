@@ -3,10 +3,15 @@
   "displayName": "DevUtils Manager",
   "description": "Save and reuse your utility functions with smart imports. Build your personal code snippet library.",
   "version": "0.0.1",
-  "publisher": "abraham-dev",
+  "publisher": "abrahamdiazdev",
   "engines": {
     "vscode": "^1.105.0"
   },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+},
   "categories": [
     "Snippets",
     "Other"
@@ -27,9 +32,9 @@
     "url": "https://github.com/abraham-diaz/devutils-manager"
   },
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/devutils-manager/issues"
+    "url": "https://github.com/abraham-diaz/devutils-manager/issues"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/devutils-manager#readme",
+  "homepage": "https://github.com/abraham-diaz/devutils-manager#readme",
   "contributes": {
     "commands": [
       {
