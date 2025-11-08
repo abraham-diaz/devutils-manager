@@ -65,4 +65,20 @@ export class StorageManager {
     this.functions = this.functions.filter(f => f.id !== id);
     this.saveFunctions();
   }
+
+  public incrementUsage(id: string): void {
+    const func = this.functions.find(f => f.id === id);
+    if (func) {
+      func.usageCount++;
+      this.saveFunctions();
+    }
+  }
+
+  public updateFunction(id: string, updates: Partial<SavedFunction>): void {
+    const func = this.functions.find(f => f.id === id);
+    if (func) {
+      Object.assign(func, updates);
+      this.saveFunctions();
+    }
+  }
 }

@@ -1,25 +1,51 @@
 {
   "name": "devutils-manager",
   "displayName": "DevUtils Manager",
-  "description": "Save and reuse your utility functions with smart imports",
+  "description": "Save and reuse your utility functions with smart imports. Build your personal code snippet library.",
   "version": "0.0.1",
+  "publisher": "abraham-dev",
   "engines": {
     "vscode": "^1.105.0"
   },
   "categories": [
+    "Snippets",
     "Other"
+  ],
+  "keywords": [
+    "snippets",
+    "utilities",
+    "code reuse",
+    "functions",
+    "library",
+    "personal",
+    "productivity"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abraham-diaz/devutils-manager"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/devutils-manager/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/devutils-manager#readme",
   "contributes": {
     "commands": [
       {
         "command": "devutils-manager.saveFunction",
-        "title": "DevUtils: Save Function"
+        "title": "DevUtils: Save Function",
+        "icon": "$(save)"
       },
       {
         "command": "devutils-manager.showFunctions",
-        "title": "DevUtils: Show My Functions"
+        "title": "DevUtils: Show My Functions",
+        "icon": "$(library)"
+      },
+      {
+        "command": "devutils-manager.insertFunction",
+        "title": "DevUtils: Insert Function",
+        "icon": "$(symbol-function)"
       }
     ],
     "menus": {
@@ -30,7 +56,26 @@
           "when": "editorHasSelection"
         }
       ]
-    }
+    },
+    "keybindings": [
+      {
+        "command": "devutils-manager.saveFunction",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "devutils-manager.showFunctions",
+        "key": "ctrl+alt+f",
+        "mac": "cmd+alt+f"
+      },
+      {
+        "command": "devutils-manager.insertFunction",
+        "key": "ctrl+alt+i",
+        "mac": "cmd+alt+i",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -283,8 +328,9 @@
     "yargs-unparser": "^2.0.0",
     "yocto-queue": "^0.1.0"
   },
-  "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Abraham Díaz Ahijón"
+  },
   "license": "ISC",
   "type": "commonjs"
 }
