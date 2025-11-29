@@ -15,6 +15,18 @@
 			"outFiles": [
 				"${workspaceFolder}/dist/**/*.js"
 			],
+			"sourceMaps": true
+		},
+		{
+			"name": "Run Extension (with watch)",
+			"type": "extensionHost",
+			"request": "launch",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js"
+			],
 			"preLaunchTask": "npm: watch",
 			"sourceMaps": true,
 			"smartStep": true,

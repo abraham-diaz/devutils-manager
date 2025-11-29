@@ -22,6 +22,13 @@ DevUtils Manager helps developers save, organize, and reuse utility functions ac
 - Search and preview before inserting
 - Automatic usage tracking
 
+### Custom Commands & Keyboard Shortcuts (NEW!)
+- Create custom VS Code commands for your saved functions
+- Configure personalized keyboard shortcuts
+- Execute your functions directly from the command palette
+- Platform-specific shortcuts (Windows/Linux and macOS)
+- Context-aware shortcuts with "when" conditions
+
 ## Commands
 
 | Command | Shortcut | Description |
@@ -29,6 +36,7 @@ DevUtils Manager helps developers save, organize, and reuse utility functions ac
 | `DevUtils: Save Function` | `Ctrl+Alt+S` | Save selected code as a utility function |
 | `DevUtils: Show My Functions` | `Ctrl+Alt+F` | Browse your function library |
 | `DevUtils: Insert Function` | `Ctrl+Alt+I` | Insert a saved function at cursor |
+| `DevUtils: Configure Custom Command` | - | Set up custom commands and shortcuts for saved functions |
 
 > **Note:** On macOS, use `Cmd` instead of `Ctrl`
 
@@ -53,7 +61,26 @@ DevUtils Manager helps developers save, organize, and reuse utility functions ac
 
 1. Press `Ctrl+Alt+F` to see all your saved functions
 2. Select any function to view its details in a side panel
-3. See code, description, language, and usage statistics
+3. See code, description, language, usage statistics, and custom commands
+
+### Creating Custom Commands (NEW!)
+
+When saving a function, you can now:
+
+1. Choose to create a custom command
+2. Enter a command name (e.g., "myDateFormatter")
+3. Optionally configure a keyboard shortcut
+4. Set platform-specific shortcuts for Mac
+5. Add "when" conditions for context-aware shortcuts
+
+Your custom command will be available as `devutils-manager.custom.yourCommandName` in the command palette!
+
+### Configuring Commands for Existing Functions
+
+1. Press `Ctrl+Shift+P` and search for "DevUtils: Configure Custom Command"
+2. Select the function you want to configure
+3. Set up the command name and keyboard shortcut
+4. Choose to open Keyboard Shortcuts settings or copy the config
 
 ## Requirements
 
@@ -65,9 +92,20 @@ All functions are stored locally in your VS Code global storage directory. Your 
 
 ## Known Issues
 
-None at the moment. Report issues at [GitHub Issues](https://github.com/yourusername/devutils-manager/issues)
+None at the moment. Report issues at [GitHub Issues](https://github.com/abraham-diaz/devutils-manager/issues)
 
 ## Release Notes
+
+### 0.1.0
+
+Major feature update - Custom Commands & Keyboard Shortcuts
+
+- **Custom Commands**: Create VS Code commands for your saved functions
+- **Keyboard Shortcuts**: Configure personalized shortcuts with platform-specific support
+- **Enhanced UI**: Guided setup for commands and shortcuts during function save
+- **Command Configuration**: New command to configure/edit commands for existing functions
+- **Improved Details View**: Function details now show custom command and keyboard shortcut info
+- **Optimized**: Extension icon optimized for faster loading (38% smaller)
 
 ### 0.0.1
 

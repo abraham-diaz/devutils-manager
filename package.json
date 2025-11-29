@@ -2,7 +2,7 @@
   "name": "devutils-manager",
   "displayName": "DevUtils Manager",
   "description": "Save and reuse your utility functions with smart imports. Build your personal code snippet library.",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "publisher": "abrahamdiazdev",
   "engines": {
     "vscode": "^1.105.0"
@@ -51,6 +51,11 @@
         "command": "devutils-manager.insertFunction",
         "title": "DevUtils: Insert Function",
         "icon": "$(symbol-function)"
+      },
+      {
+        "command": "devutils-manager.configureCommand",
+        "title": "DevUtils: Configure Custom Command",
+        "icon": "$(settings-gear)"
       }
     ],
     "menus": {
