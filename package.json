@@ -2,7 +2,7 @@
   "name": "devutils-manager",
   "displayName": "DevUtils Manager – Productivity Toolkit for Developers in VS Code",
   "description": "Manage, run, and organize your DevUtils collections directly from VS Code. Speed up your workflow with fast and accessible utilities.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "abrahamdiazdev",
   "engines": {
     "vscode": "^1.105.0"
