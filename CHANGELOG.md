@@ -2,6 +2,41 @@
 
 All notable changes to the "devutils-manager" extension will be documented in this file.
 
+## [0.3.0] - 2025-12-26
+
+### Added
+- **Sidebar Panel**: Dedicated activity bar icon with hierarchical function tree view
+  - Custom SVG icon in the activity bar
+  - Functions organized by category folders
+  - Click to view details, right-click for actions
+- **Categories System**: Organize functions into folders
+  - Predefined categories: General, Utils, API, UI Components, Database, Auth, Testing
+  - Create, rename, and delete custom categories
+  - Move functions between categories
+  - Category count displayed in tree view
+- **Edit Functions**: Full editing support for saved functions
+  - Edit name, description, code, or category individually
+  - Edit all properties at once
+  - Access from sidebar context menu or details panel
+- **Export Functions**: Backup your function library
+  - Export all functions and custom categories to JSON
+  - Choose save location with file dialog
+- **Import Functions**: Restore or share functions
+  - Import from JSON backup files
+  - Smart duplicate handling: Skip, Replace, or Keep Both
+  - Automatic category import
+
+### Improved
+- Tree view with expandable category folders
+- Functions automatically migrated to "General" category
+- Better organization and navigation
+
+## [0.2.0] - 2025-12-02
+
+### Changed
+- Code refactoring and structure improvements
+- Bug fixes and optimizations
+
 ## [0.1.0] - 2025-11-29
 
 ### Added

@@ -44,6 +44,12 @@ export async function saveFunctionCommand(
     placeHolder: 'What does this function do?'
   });
 
+  // Seleccionar categoría
+  const category = await selectCategory(storageManager);
+  if (!category) {
+    return;
+  }
+
   // Preguntar si quiere configurar comando personalizado
   const wantCustomCommand = await vscode.window.showQuickPick(['Yes', 'No'], {
     placeHolder: 'Do you want to create a custom command for this function?',
@@ -75,7 +81,8 @@ export async function saveFunctionCommand(
     createdAt: new Date().toISOString(),
     usageCount: 0,
     customCommand: customCommand?.trim(),
-    keybinding: keybinding
+    keybinding: keybinding,
+    category: category
   };
 
   // Guardar
@@ -220,4 +227,53 @@ function generateKeybindingConfig(func: SavedFunction): string {
   }
 
   return JSON.stringify(config, null, 2);
+}
+
+async function selectCategory(storageManager: StorageManager): Promise<string | undefined> {
+  const categories = storageManager.getCategories();
+
+  const items = [
+    ...categories.map(cat => ({
+      label: cat,
+      description: ''
+    })),
+    {
+      label: '$(add) Create New Category...',
+      description: 'Add a custom category'
+    }
+  ];
+
+  const selected = await vscode.window.showQuickPick(items, {
+    placeHolder: 'Select a category for this function',
+    title: 'Category'
+  });
+
+  if (!selected) {
+    return undefined;
+  }
+
+  if (selected.label === '$(add) Create New Category...') {
+    const newCategory = await vscode.window.showInputBox({
+      prompt: 'Enter new category name',
+      placeHolder: 'e.g., Helpers, Validation, Formatting',
+      validateInput: (value) => {
+        if (!value || value.trim().length === 0) {
+          return 'Category name is required';
+        }
+        if (categories.includes(value.trim())) {
+          return 'Category already exists';
+        }
+        return null;
+      }
+    });
+
+    if (!newCategory) {
+      return undefined;
+    }
+
+    storageManager.addCategory(newCategory.trim());
+    return newCategory.trim();
+  }
+
+  return selected.label;
 }

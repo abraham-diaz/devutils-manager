@@ -2,7 +2,7 @@
   "name": "devutils-manager",
   "displayName": "DevUtils Manager – Productivity Toolkit for Developers in VS Code",
   "description": "Manage, run, and organize your DevUtils collections directly from VS Code. Speed up your workflow with fast and accessible utilities.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "abrahamdiazdev",
   "engines": {
     "vscode": "^1.105.0"
@@ -40,6 +40,23 @@
   },
   "homepage": "https://github.com/abraham-diaz/devutils-manager#readme",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "devutils-manager",
+          "title": "DevUtils Manager",
+          "icon": "images/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "devutils-manager": [
+        {
+          "id": "devutils-manager.functionsView",
+          "name": "My Functions"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "devutils-manager.saveFunction",
@@ -60,6 +77,56 @@
         "command": "devutils-manager.configureCommand",
         "title": "DevUtils: Configure Custom Command",
         "icon": "$(settings-gear)"
+      },
+      {
+        "command": "devutils-manager.refreshTree",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "devutils-manager.viewFunctionDetails",
+        "title": "View Details",
+        "icon": "$(info)"
+      },
+      {
+        "command": "devutils-manager.insertFromTree",
+        "title": "Insert Function",
+        "icon": "$(insert)"
+      },
+      {
+        "command": "devutils-manager.deleteFromTree",
+        "title": "Delete Function",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "devutils-manager.editFunction",
+        "title": "Edit Function",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "devutils-manager.addCategory",
+        "title": "Add Category",
+        "icon": "$(add)"
+      },
+      {
+        "command": "devutils-manager.renameCategory",
+        "title": "Rename Category",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "devutils-manager.deleteCategory",
+        "title": "Delete Category",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "devutils-manager.exportFunctions",
+        "title": "DevUtils: Export Functions",
+        "icon": "$(export)"
+      },
+      {
+        "command": "devutils-manager.importFunctions",
+        "title": "DevUtils: Import Functions",
+        "icon": "$(import)"
       }
     ],
     "menus": {
@@ -68,6 +135,40 @@
           "command": "devutils-manager.saveFunction",
           "group": "9_cutcopypaste",
           "when": "editorHasSelection"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "devutils-manager.refreshTree",
+          "when": "view == devutils-manager.functionsView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "devutils-manager.editFunction",
+          "when": "view == devutils-manager.functionsView && viewItem == savedFunction",
+          "group": "1_actions@0"
+        },
+        {
+          "command": "devutils-manager.insertFromTree",
+          "when": "view == devutils-manager.functionsView && viewItem == savedFunction",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "devutils-manager.deleteFromTree",
+          "when": "view == devutils-manager.functionsView && viewItem == savedFunction",
+          "group": "2_destructive@1"
+        },
+        {
+          "command": "devutils-manager.renameCategory",
+          "when": "view == devutils-manager.functionsView && viewItem == customCategory",
+          "group": "1_actions@0"
+        },
+        {
+          "command": "devutils-manager.deleteCategory",
+          "when": "view == devutils-manager.functionsView && viewItem == customCategory",
+          "group": "2_destructive@1"
         }
       ]
     },
