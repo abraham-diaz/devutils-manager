@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { SavedFunction } from '../models';
 import { StorageManager } from '../storage';
 import { escapeHtml } from '../utils/helpers';
+import { editFunctionCommand } from '../commands/editFunction';
 
 export class FunctionDetailsView {
   private panel: vscode.WebviewPanel | undefined;
@@ -33,6 +34,9 @@ export class FunctionDetailsView {
             break;
           case 'insert':
             await this.handleInsert(func);
+            break;
+          case 'edit':
+            await this.handleEdit(func);
             break;
         }
       },
@@ -75,6 +79,17 @@ export class FunctionDetailsView {
     } else {
       vscode.window.showErrorMessage('No active editor');
     }
+  }
+
+  private async handleEdit(func: SavedFunction): Promise<void> {
+    // Close the panel before editing
+    this.panel?.dispose();
+
+    await editFunctionCommand(func, this.storageManager, () => {
+      if (this.onFunctionDeleted) {
+        this.onFunctionDeleted();
+      }
+    });
   }
 
   private getHtml(func: SavedFunction): string {
@@ -233,6 +248,9 @@ export class FunctionDetailsView {
           <button class="btn btn-primary" onclick="insertFunction()">
             <span>$(insert)</span> Insert Function
           </button>
+          <button class="btn btn-secondary" onclick="editFunction()">
+            <span>$(edit)</span> Edit Function
+          </button>
           <button class="btn btn-danger" onclick="deleteFunction()">
             <span>$(trash)</span> Delete Function
           </button>
@@ -244,6 +262,12 @@ export class FunctionDetailsView {
           function insertFunction() {
             vscode.postMessage({
               command: 'insert'
+            });
+          }
+
+          function editFunction() {
+            vscode.postMessage({
+              command: 'edit'
             });
           }
 
